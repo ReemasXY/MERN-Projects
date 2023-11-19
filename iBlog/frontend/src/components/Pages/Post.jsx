@@ -1,32 +1,37 @@
 import React from "react";
-
-const Post = () => {
+import { format } from "date-fns";
+import { useNavigate, Link } from "react-router-dom";
+const Post = ({
+  _id,
+  title,
+  summary,
+  content,
+  image,
+  createdAt,
+  updatedAt,
+  author,
+}) => {
+  const navigation = useNavigate();
+  const handleClick = () => {
+    navigation(`/post/${_id}`);
+  };
   return (
     <>
       <div className="post">
-        <div className="img">
-          <img
-            src="https://i.pinimg.com/564x/13/3b/0a/133b0ab0142b8faf0e11ad289ff0749e.jpg"
-            alt=""
-          />
+        <div className="img" onClick={handleClick}>
+          <img src={"http://localhost:5000/" + image} alt="" />
         </div>
         <div className="texts">
-          <h2>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum nam
-            voluptas laboriosam?
-          </h2>
+          <Link to={`/post/${_id}`}>
+            <h2 style={{ cursor: "pointer" }}>{title}</h2>
+          </Link>
           <p className="info">
-            <a className="author">Sameer Maharjan</a>
-            <span className="time">2023/11/09</span>
+            <a className="author">{author.username}</a>
+            <span className="time">
+              {format(new Date(createdAt), "MMM d yyy hh:mm bb")}
+            </span>
           </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis
-            in provident similique expedita alias a nihil ducimus mollitia magni
-            beatae, neque nostrum inventore odit ut quas iusto, at debitis
-            dolorem harum quaerat? Error, beatae fuga? Expedita voluptatem a
-            eveniet facere cumque distinctio facilis rem provident tempora,
-            tenetur nisi, quisquam sed!
-          </p>
+          <p>{summary}</p>
         </div>
       </div>
     </>

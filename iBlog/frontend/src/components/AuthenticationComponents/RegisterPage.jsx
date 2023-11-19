@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const RegisterPage = () => {
-  const [Inputs, setInputs] = useState({});
+  const [Inputs, setInputs] = useState({ username: "", password: "" });
   const handleChange = (e) => {
     setInputs({ ...Inputs, [e.target.name]: e.target.value });
   };
@@ -16,7 +16,12 @@ const RegisterPage = () => {
       // Convert a JavaScript object into a string with JSON.stringify().
     });
     const result = await Register.json();
-    console.log(result);
+
+    if (Register.status === 200) {
+      console.log(result);
+    } else {
+      console.log("Registration failed", result.error);
+    }
   };
   return (
     <form
@@ -33,6 +38,8 @@ const RegisterPage = () => {
         placeholder="Username"
         name="username"
         onChange={handleChange}
+        value={Inputs.username}
+        minLength={4}
         required
       />
       <input
@@ -40,6 +47,7 @@ const RegisterPage = () => {
         placeholder="Password"
         name="password"
         onChange={handleChange}
+        value={Inputs.password}
         required
       />
       <button>Register</button>
