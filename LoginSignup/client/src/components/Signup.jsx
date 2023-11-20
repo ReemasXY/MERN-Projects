@@ -51,7 +51,7 @@ const Signup = () => {
     setError(error);
   };
   const handleSubmit = async () => {
-    const url = "http://localhost:3002/user/signup";
+    const url = import.meta.env.VITE_HOST + "/user/signup";
     console.log(inputs);
     const createUser = fetch(url, {
       method: "POST", // *GET, POST, PUT, DELETE, etc.

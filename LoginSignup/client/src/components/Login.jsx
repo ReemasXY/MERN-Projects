@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ToastContext } from "../context/ToastContext";
 
 const Login = () => {
+  console.log(import.meta.env.VITE_HOST);
   const [Inputs, setInputs] = useState({
     email: "",
     password: "",
@@ -36,7 +37,8 @@ const Login = () => {
   };
   const handleSubmit = async () => {
     console.log("runnin fetch");
-    const url = "http://localhost:3002/user/login";
+    const url = import.meta.env.VITE_HOST + "/user/login";
+    console.log(url);
     const GetUser = fetch(url, {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
 

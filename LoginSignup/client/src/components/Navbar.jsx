@@ -8,7 +8,7 @@ const Navbar = ({ setLogin }) => {
   const { showToast } = Toast;
   useEffect(() => {
     (async () => {
-      const response = await fetch("http://localhost:3002/user/info", {
+      const response = await fetch(import.meta.env.VITE_HOST + "/user/info", {
         credentials: "include",
       });
       const result = await response.json();
@@ -23,7 +23,7 @@ const Navbar = ({ setLogin }) => {
   }, []);
   const handleLogout = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:3002/user/logout", {
+    const response = await fetch(import.meta.env.VITE_HOST + "/user/logout", {
       credentials: "include",
     });
     const result = await response.json();
