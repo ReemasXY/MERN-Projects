@@ -1,0 +1,34 @@
+.shadow1{
+  box-shadow:  4px 4px 10px rgb(124, 117, 117);
+
+}
+
+.form{
+  width: 40%;
+  background-color: white;
+  max-width: 500px;
+}
+.error{
+  color: red;
+  position: absolute;
+  margin-bottom: 10px !important;
+}
+.form-floating>label{
+  padding: 0.7rem 0;
+  
+}
+.form-floating >.form-control{
+  padding: 1.7rem 0.3rem;
+}
+input{
+  
+}
+@media screen and (max-width: 800px) {
+  .form{
+    width: 100%;
+    border-radius: 0 !important;
+    height: 100%;
+    max-width: none !important;
+  }
+  
+}
