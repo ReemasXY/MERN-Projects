@@ -1,7 +1,13 @@
 import React from "react";
-
-const Home = () => {
-  return <div className="text-blue-900 mx-4 my-16">Home</div>;
+import Navbar from "./Navbar";
+import CreateBook from "./CreateBook";
+const Home = (props) => {
+  return (
+    <>
+      <Navbar setLogin={props.setLogin} />
+      <CreateBook />
+    </>
+  );
 };
 
 export default Home;

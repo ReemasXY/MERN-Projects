@@ -55,7 +55,7 @@ const Login = () => {
       console.log(result);
       // showToast("success", "Logged in Successfully");
 
-      // navigation("/");
+      navigation("/");
     } else {
       console.log(result.errors);
       // showToast("danger", result.errors);
