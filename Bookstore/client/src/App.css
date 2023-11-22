@@ -1,0 +1,40 @@
+.shadow1{
+  box-shadow:  4px 4px 10px rgb(124, 117, 117);
+
+}
+
+.form{
+  width: 40%;
+  background-color: white;
+  max-width: 500px;
+}
+.error{
+  color: red;
+  position: absolute;
+  margin-bottom: 10px !important;
+}
+.form-floating>label{
+  padding: 0.7rem 0;
+  
+}
+.form-floating >.form-control{
+  padding: 1.7rem 0.3rem;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus
+ {
+
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  -webkit-text-fill-color: black;
+ 
+}
+@media screen and (max-width: 800px) {
+  .form{
+    width: 100%;
+    border-radius: 0 !important;
+    height: 100%;
+    max-width: none !important;
+  }
+  
+}
