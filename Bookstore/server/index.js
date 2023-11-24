@@ -17,7 +17,7 @@ app.use(
 );
 app.use(express.json()); // required to parse the json data sent from the client side
 
-app.use("/", require("./Routes/loginSignup"));
+app.use("/", require("./Routes/LoginSignup"));
 app.use("/", require("./Routes/Book"));
 app.listen(port, () => {
   console.log(` listening on port ${port}`);
