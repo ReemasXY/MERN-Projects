@@ -11,7 +11,7 @@ connection();
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://bookstore-three-beige.vercel.app",
     credentials: true,
   })
 );
