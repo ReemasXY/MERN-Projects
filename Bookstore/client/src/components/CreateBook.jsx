@@ -1,14 +1,19 @@
 import React, { useState } from "react";
-import { json } from "react-router-dom";
+
+import BackButton from "./BackButton";
+import { useNavigate } from "react-router-dom";
+import { useSnackbar } from "notistack";
 
 const CreateBook = () => {
+  const navigate = useNavigate();
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const [Inputs, setInputs] = useState();
   const handleChange = (e) => {
     setInputs({ ...Inputs, [e.target.name]: e.target.value });
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:3002/createbook", {
+    const response = await fetch(import.meta.env.VITE_HOST+"/createbook", {
       method: "POST",
       headers: {
         "content-type": "Application/json",
@@ -17,37 +22,61 @@ const CreateBook = () => {
       credentials: "include",
     });
     const result = await response.json();
-    console.log(result);
+    if (!result.errors) {
+      enqueueSnackbar("BookCreated Successfully!", {
+        variant: "success",
+      
+      });
+      navigate("/");
+    } else {
+      console.log(result.errors);
+      enqueueSnackbar("BookCreation Failed !", { variant: "error" });
+    }
   };
   return (
-    <div className="container my-4 tw-w-3/5">
-      <form action="" className="tw tw-space-y-4" onSubmit={handleSubmit}>
-        <div className="title tw-flex tw-flex-col">
-          <label htmlFor="title">Title</label>
-          <input
-            type="text"
-            name="title"
-            className="tw-border-2 tw-rounded-md tw-p-2"
-            onChange={handleChange}
-            required
-            min={5}
-          />
-        </div>
-        <div className="publishedYear tw-flex tw-flex-col">
-          <label htmlFor="publishedYear">PublishedYear</label>
-          <input
-            type="text"
-            name="publishedYear"
-            className="tw-border-2 tw-rounded-md tw-p-2"
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button className="tw-bg-purple-600 tw-p-2 tw-rounded-md tw-text-white">
-          Create Book
-        </button>
-      </form>
-    </div>
+    <>
+      <BackButton />
+      <div className="container my-4 tw-w-3/5">
+        <form action="" className="tw tw-space-y-4" onSubmit={handleSubmit}>
+          <h2 className="tw-text-center">Create Book</h2>
+          <div className="title tw-flex tw-flex-col">
+            <label htmlFor="title">Title</label>
+            <input
+              type="text"
+              name="title"
+              className="tw-border-2 tw-rounded-md tw-p-2"
+              onChange={handleChange}
+              minLength={5}
+              required
+            />
+          </div>
+          <div className="publishedYear tw-flex tw-flex-col">
+            <label htmlFor="publishedYear">PublishedYear</label>
+            <input
+              type="number"
+              name="publishedYear"
+              className="tw-border-2 tw-rounded-md tw-p-2"
+              onChange={handleChange}
+              min={1500}
+              required
+            />
+          </div>
+          <div className="description tw-flex tw-flex-col">
+            <label htmlFor="description">Description</label>
+            <textarea
+              name="description"
+              className="tw-border-2 tw-rounded-md tw-p-2 tw-h-40"
+              onChange={handleChange}
+              minLength={100}
+              required
+            ></textarea>
+          </div>
+          <button className="tw-bg-purple-600 tw-p-2 tw-rounded-md tw-text-white">
+            Create Book
+          </button>
+        </form>
+      </div>
+    </>
   );
 };
 

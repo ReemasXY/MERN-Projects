@@ -1,8 +1,10 @@
+import { useSnackbar } from "notistack";
 import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-// import { ToastContext } from "../context/ToastContext";
 
+// import { ToastContext } from "../context/ToastContext";
 const Login = () => {
+  const { enqueueSnackbar } = useSnackbar();
   console.log(import.meta.env.VITE_HOST);
   const [Inputs, setInputs] = useState({
     email: "",
@@ -54,10 +56,15 @@ const Login = () => {
     if (!result.errors) {
       console.log(result);
       // showToast("success", "Logged in Successfully");
-
+      enqueueSnackbar("Login Successfully!", {
+        variant: "success",
+      });
       navigation("/");
     } else {
       console.log(result.errors);
+      enqueueSnackbar("Login Failed!", {
+        variant: "error",
+      });
       // showToast("danger", result.errors);
     }
   };
@@ -77,7 +84,9 @@ const Login = () => {
             }
           }}
         >
-          <h3 className="text-center mb-3 text-3xl font-semibold">Login</h3>
+          <h3 className="text-center mb-3 tw-text-3xl tw-font-semibold">
+            Login
+          </h3>
           <div className="form-floating mb-4 postion-relative">
             <input
               type="text"

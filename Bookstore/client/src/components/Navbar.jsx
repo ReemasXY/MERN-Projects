@@ -1,9 +1,10 @@
+import { useSnackbar } from "notistack";
 import React, { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = ({ setLogin }) => {
   const [user, setuser] = useState(null);
-
+  const { enqueueSnackbar } = useSnackbar();
   useEffect(() => {
     (async () => {
       console.log(import.meta.env.VITE_HOST + "/user/info");
@@ -11,7 +12,7 @@ const Navbar = ({ setLogin }) => {
         credentials: "include",
       });
       const result = await response.json();
-      console.log(user, result);
+
       if (!result.errors) {
         setuser(result);
         setLogin(result);
@@ -28,9 +29,15 @@ const Navbar = ({ setLogin }) => {
     const result = await response.json();
     if (!result.errors) {
       // showToast("success", "Logged-Out Successfully");
+      enqueueSnackbar("Loggedout Successfully!", {
+        variant: "success",
+      });
       setuser(null);
       setLogin(false);
     } else {
+      enqueueSnackbar("LoggingOut Failed!", {
+        variant: "error",
+      });
       console.log("error seen");
     }
   };

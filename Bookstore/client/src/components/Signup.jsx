@@ -1,3 +1,4 @@
+import { useSnackbar } from "notistack";
 import React, { useContext } from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -5,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  const { enqueueSnackbar } = useSnackbar();
   // const Toast = useContext(ToastContext);
   // const { showToast } = Toast;
   const navigation = useNavigate();
@@ -67,10 +69,16 @@ const Signup = () => {
     const result = await response.json();
     console.log(result);
     if (result.success) {
+      enqueueSnackbar("SignedIn Successfully!", {
+        variant: "success",
+      });
       // showToast("success", "Account Created Successfully");
       navigation("/authentication/login");
     } else {
       console.log(result.errors);
+      enqueueSnackbar("SignedIn Failed!", {
+        variant: "error",
+      });
       // showToast("danger", result.errors);
     }
   };
@@ -90,7 +98,9 @@ const Signup = () => {
           }}
           className="container-md  px-5 py-3 rounded-3 form "
         >
-          <h3 className="text-center mb-3 text-3xl font-semibold">Signup</h3>
+          <h3 className="text-center mb-3 tw-text-3xl tw-font-semibold">
+            Signup
+          </h3>
           <div className="form-floating mb-4 postion-relative">
             <input
               type="text"
