@@ -1,8 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const Connection = require("./database");
-const server = require("http").createServer(app);
 const app = express();
+const server = require("http").createServer(app);
 require("dotenv").config();
 const socket = require("socket.io");
 // const port = process.env.PORT;
