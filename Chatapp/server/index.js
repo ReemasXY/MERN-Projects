@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const Connection = require("./database");
+const server = require("http").createServer(app);
 const app = express();
 require("dotenv").config();
 const socket = require("socket.io");
@@ -20,11 +21,11 @@ Connection(); //connection to database
 app.use("/api/auth", require("./routes/userRoutes"));
 app.use("/api/messages", require("./routes/messagesRoutes"));
 
-const server = app.listen(5000, () => {
+server.listen(5000, () => {
   console.log("Running on the port "); //running in different port
 });
 
-const io = socket(5001, {
+const io = socket(server, {
   //running in different port
   cors: [],
 });
