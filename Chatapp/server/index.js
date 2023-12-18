@@ -4,7 +4,7 @@ const Connection = require("./database");
 const app = express();
 const server = require("http").createServer(app);
 require("dotenv").config();
-const socket = require("socket.io");
+const { Server } = require("socket.io");
 // const port = process.env.PORT;
 // console.log(typeof parseInt(port));
 
@@ -25,15 +25,19 @@ server.listen(5000, () => {
   console.log("Running on the port "); //running in different port
 });
 
-const io = socket(server, {
-  //running in different port
+// const io = socket(server, {
+//   //running in different port
+//   cors: [],
+// });
+
+const io = new Server(server, {
   cors: [],
 });
-
 global.onlineUsers = new Map();
 
 io.on("connection", (socket) => {
   global.chatSocket = socket;
+
   socket.on("add-user", (userId) => {
     onlineUsers.set(userId, socket.id); // socket id keeps on changing as per the reload of the page or say rendering
     // so inorder to identify which socket belongs to which user we store the userId and socketid of the user to the global variable
