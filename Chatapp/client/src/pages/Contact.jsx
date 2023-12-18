@@ -44,7 +44,7 @@ const Contact = ({ allUsers, currentUser, changeChat }) => {
               );
             })}
           </div>
-          <div className="currentUser static sm:absolute sm:right-3 lg:static flex flex-col items-center space-y-2 text-white lg:w-full lg:!mt-auto lg:flex-row lg:py-3 lg: space-x-3 uppercase justify-center ">
+          <div className="currentUser static md:absolute md:right-3 lg:static flex flex-col items-center space-y-2 text-white lg:w-full lg:!mt-auto lg:flex-row lg:py-3 lg: space-x-3 uppercase justify-center ">
             <div
               className="img"
               dangerouslySetInnerHTML={{ __html: currentUserImage }}
@@ -65,9 +65,11 @@ const Container = styled.div`
     padding-right: 1.5rem;
     &::-webkit-scrollbar {
       width: 0.2rem;
+      height: 0.2rem;
       &-thumb {
         background-color: #ffffff39;
         width: 0.1rem;
+        height: 0.1rem;
         border-radius: 10px;
       }
     }

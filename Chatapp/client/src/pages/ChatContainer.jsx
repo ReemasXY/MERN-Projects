@@ -1,15 +1,50 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Logout from "./Logout";
 import ChatInput from "./ChatInput";
 import ChatMessages from "./ChatMessages";
+import axios from "axios";
+import { sendMsgRoute, getAllMsgRoute } from "../utils/APIRoutes";
 
-const ChatContainer = ({ currentChat }) => {
-  const handleSendMsg = (msg) => {
-    alert(msg);
+const ChatContainer = ({ currentChat, currentUser, socket, navHeightRef }) => {
+  const [messages, setmessages] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const { data } = await axios.post(getAllMsgRoute, {
+        from: currentUser._id,
+        to: currentChat._id,
+      });
+      setmessages(data);
+    })();
+  }, [currentChat]);
+
+  const handleSendMsg = async (msg) => {
+    const { data } = await axios.post(sendMsgRoute, {
+      from: currentUser._id,
+      to: currentChat._id,
+      message: msg,
+    });
+    const msgs = [...messages];
+    msgs.push({ fromSelf: true, message: msg });
+    setmessages(msgs);
+
+    socket.current.emit("send-msg", {
+      to: currentChat._id,
+      msg,
+    });
   };
+  socket.current.on("msg-received", (data) => {
+    const message = [...messages];
+    console.log(message);
+    message.push({ fromSelf: false, message: data });
+    console.log(message);
+    setmessages(message);
+  });
   return (
-    <Container className="flex flex-col h-full relative">
+    <Container
+      className={`flex flex-col h-[calc(100vh-167px)] md:h-[calc(100vh-164px)] relative bg-[#131324] lg:h-auto`}
+    >
       <div className="chat-header  flex justify-between items-center p-4 ">
         <div className="user-details flex items-center space-x-3">
           <div
@@ -22,7 +57,7 @@ const ChatContainer = ({ currentChat }) => {
         </div>
         <Logout />
       </div>
-      <ChatMessages className="p-4 " />
+      <ChatMessages className="p-4 " messages={messages} />
       <ChatInput handleSendMsg={handleSendMsg} />
     </Container>
   );

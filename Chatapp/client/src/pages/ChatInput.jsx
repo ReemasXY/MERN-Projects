@@ -24,7 +24,7 @@ const ChatInput = ({ handleSendMsg }) => {
     }
   };
   return (
-    <div className="main mt-auto flex space-x-4 bg-[#080420]  items-center p-4 ">
+    <div className="main mt-auto flex space-x-4 bg-[#080420]  items-center p-4 z-10">
       <div className="button-container flex items-center">
         <div className="emoji ">
           <BsEmojiSmile
@@ -36,7 +36,7 @@ const ChatInput = ({ handleSendMsg }) => {
 
           {showEmojiPicker && (
             <div
-              className="parent absolute h-full w-full top-0 left-0"
+              className="parent absolute h-full w-full top-0 left-0 -z-10"
               onClick={() => {
                 setshowEmojiPicker(!showEmojiPicker); // !false= true
               }}

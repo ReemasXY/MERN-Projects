@@ -44,7 +44,9 @@ const register = async (req, res, next) => {
 const login = async (req, res) => {
   try {
     const { username, password } = req.body;
+    console.log(username, password);
     const User = await user.findOne({ username });
+
     if (!User) {
       return res.json({ errors: "Please enter a valid credentials" });
     }

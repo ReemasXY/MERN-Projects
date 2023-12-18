@@ -8,11 +8,11 @@ const msgSchema = new Schema(
         type: String,
         required: true,
       },
-      users: Array,
-      sender: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-      },
+    },
+    users: Array,
+    sender: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
     },
   },
   {
