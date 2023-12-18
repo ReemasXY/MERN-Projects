@@ -27,7 +27,6 @@ const Chat = () => {
   }, []);
   useEffect(() => {
     if (currentUser) {
-      console.log("socket running");
       socket.current = io(sockethost);
       socket.current.emit("add-user", currentUser._id);
     }
@@ -39,7 +38,7 @@ const Chat = () => {
           const { data } = await axios.get(
             allUsersRoute + "/" + currentUser._id
           );
-          console.log(data);
+
           setallUsers(data);
         } else {
           navigate("/setAvatar");

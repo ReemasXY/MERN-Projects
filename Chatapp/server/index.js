@@ -7,7 +7,11 @@ const socket = require("socket.io");
 // const port = process.env.PORT;
 // console.log(typeof parseInt(port));
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+  })
+);
 app.use(express.json());
 Connection(); //connection to database
 
@@ -32,7 +36,6 @@ io.on("connection", (socket) => {
   socket.on("add-user", (userId) => {
     onlineUsers.set(userId, socket.id); // socket id keeps on changing as per the reload of the page or say rendering
     // so inorder to identify which socket belongs to which user we store the userId and socketid of the user to the global variable
-    console.log(onlineUsers);
   });
 
   socket.on("send-msg", (data) => {

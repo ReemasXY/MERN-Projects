@@ -6,7 +6,7 @@ const Contact = ({ allUsers, currentUser, changeChat }) => {
   const [currentUserImage, setcurrentUserImage] = useState(
     currentUser.AvatarImage
   );
-  console.log(currentUserName);
+
   const [currentSelected, setcurrentSelected] = useState();
   const handleChat = (index, contact) => {
     setcurrentSelected(index);

@@ -24,7 +24,7 @@ const Login = () => {
     if (validation()) {
       try {
         const { data } = await axios.post(loginRoute, Inputs);
-        console.log(data);
+   
         if (data.errors) {
           toast.error(data.errors);
         } else {

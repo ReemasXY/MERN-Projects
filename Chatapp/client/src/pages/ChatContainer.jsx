@@ -36,9 +36,9 @@ const ChatContainer = ({ currentChat, currentUser, socket, navHeightRef }) => {
   };
   socket.current.on("msg-received", (data) => {
     const message = [...messages];
-    console.log(message);
+
     message.push({ fromSelf: false, message: data });
-    console.log(message);
+  
     setmessages(message);
   });
   return (

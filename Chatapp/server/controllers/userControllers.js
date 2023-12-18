@@ -35,7 +35,7 @@ const register = async (req, res, next) => {
     });
     const jsonuser = User.toJSON(); // mongoose object cannot be operated as js/json object
     delete jsonuser.password; //deletes the password from the object User
-    console.log(jsonuser);
+
     res.json(jsonuser);
   } catch (error) {
     res.json({ errors: "Internal Error Occured" });
@@ -44,7 +44,7 @@ const register = async (req, res, next) => {
 const login = async (req, res) => {
   try {
     const { username, password } = req.body;
-    console.log(username, password);
+
     const User = await user.findOne({ username });
 
     if (!User) {
@@ -66,7 +66,7 @@ const login = async (req, res) => {
 const setAvatar = async (req, res) => {
   try {
     const { image, userId } = req.body;
-    console.log(image, userId);
+
     const userData = await user.findByIdAndUpdate(
       userId,
       {
@@ -94,7 +94,6 @@ const allUsers = async (req, res) => {
 
     res.json(allUsers);
   } catch (error) {
-    console.log(error);
     res.json({ errors: "Internal Error Occured" });
   }
 };

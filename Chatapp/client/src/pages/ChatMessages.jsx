@@ -3,7 +3,6 @@ import styled from "styled-components";
 const ChatMessages = ({ messages }) => {
   const scrollRef = useRef(null);
   useEffect(() => {
-    console.log(scrollRef.current);
     scrollRef.current?.scrollIntoView({ behaviour: "smooth" });
   }, [messages]);
 

@@ -26,7 +26,6 @@ const SetAvatar = () => {
     if (data.errors) {
       toast.error("Error setting avatar");
     } else {
-      console.log(data);
       localStorage.setItem("chat-app-user", JSON.stringify(data));
       navigate("/");
     }
@@ -35,11 +34,10 @@ const SetAvatar = () => {
     (async () => {
       const images = [];
       for (let i = 0; i < 4; i++) {
-        console.log(i);
         const { data } = await axios.get(
           api + "/" + Math.round(Math.random() * 1000)
         );
-        console.log(data);
+
         // const buffer = new Buffer(data);
 
         images.push(data);
@@ -57,8 +55,8 @@ const SetAvatar = () => {
   return (
     <>
       {loading ? (
-        <div className=" h-screen flex items-center">
-          <img src={Loader} alt="" className="h-full" />
+        <div className=" h-screen flex items-center bg-[#1d1f39] justify-center">
+          <img src={Loader} alt="" className="max-w-[500px]" />
         </div>
       ) : (
         <div
@@ -76,7 +74,7 @@ const SetAvatar = () => {
                 <div
                   key={index}
                   className={
-                    selectedAvatar === index ? "avatar selected" : "avatar"
+                    selectedAvatar === index ? "avatar selected " : "avatar "
                   }
                   dangerouslySetInnerHTML={{ __html: avatar }}
                   onClick={() => {
@@ -123,7 +121,7 @@ const AvatarContainer = styled.div`
     padding: 7px;
     border: 0.4rem solid transparent;
     border-radius: 50%;
-
+    cursor: pointer;
     transition: 0.5s ease-in-out;
   }
   .svg {

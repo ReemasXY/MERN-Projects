@@ -34,7 +34,7 @@ const getAllMsg = async (req, res, next) => {
         message: msg.message.text,
       };
     });
-    console.log(projectedMsg);
+
     return res.json(projectedMsg);
   } catch (error) {
     res.json({ errors: "Internal Error Occured" });

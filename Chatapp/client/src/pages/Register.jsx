@@ -22,9 +22,9 @@ const Register = () => {
     if (validation()) {
       try {
         const { confirmPassword, ...sentData } = Inputs;
-        console.log(registerRoute);
+
         const { data } = await axios.post(registerRoute, sentData); //no need to convert into json object
-        console.log(data);
+
         if (data.errors) {
           toast.error(data.errors);
         } else {
@@ -32,7 +32,6 @@ const Register = () => {
           navigate("/");
         }
       } catch (error) {
-        console.log(error);
         toast.error("Internal Server error");
       }
     }

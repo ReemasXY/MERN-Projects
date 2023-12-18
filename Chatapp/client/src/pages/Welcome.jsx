@@ -3,7 +3,7 @@ import React from "react";
 import Robot from "../assets/robot.gif";
 import Logout from "./Logout";
 const Welcome = ({ currentUser }) => {
-  console.log(currentUser);
+
   return (
     <>
       <div className="main flex items-center justify-center flex-col text-white h-full lg:w-full relative">
