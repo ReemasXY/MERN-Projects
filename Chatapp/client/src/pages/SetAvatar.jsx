@@ -55,7 +55,7 @@ const SetAvatar = () => {
   return (
     <>
       {loading ? (
-        <div className=" h-screen flex items-center bg-[#1d1f39] justify-center">
+        <div className=" min-h-screen flex items-center bg-[#1d1f39] justify-center">
           <img src={Loader} alt="" className="max-w-[500px]" />
         </div>
       ) : (
@@ -93,7 +93,7 @@ const SetAvatar = () => {
               background: " transparent",
               border: " 1px solid #4e0eff",
               color: " white",
-              margin: "40px",
+              marginTop: "40px",
             }}
             className="hover:!bg-[#4e0eff]"
             onClick={() => {

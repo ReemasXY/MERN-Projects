@@ -18,6 +18,15 @@ const ChatContainer = ({ currentChat, currentUser, socket }) => {
       container.classList.remove("height");
     }
   });
+  useEffect(() => {
+    const container = document.getElementById("container");
+    if (window.innerHeight < 400) {
+      console.log("hello");
+      container.classList.add("height");
+    } else {
+      container.classList.remove("height");
+    }
+  }, []);
 
   useEffect(() => {
     (async () => {
@@ -80,6 +89,5 @@ const Container = styled.div`
     width: 60px;
     height: 60px;
   }
- 
 `;
 export default ChatContainer;
