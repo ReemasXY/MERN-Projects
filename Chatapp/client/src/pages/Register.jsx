@@ -108,7 +108,7 @@ const Register = () => {
 };
 const FormContainer = styled.div`
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
   justify-content: center;
   align-items: center;
   background-color: #131324;
