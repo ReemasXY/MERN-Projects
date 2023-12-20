@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
 import styled from "styled-components";
-const Contact = ({ allUsers, currentUser, changeChat }) => {
+const Contact = ({ allUsers, currentUser, changeChat, heightRef }) => {
   const [currentUserName, setcurrentUserName] = useState(currentUser.username);
   const [currentUserImage, setcurrentUserImage] = useState(
     currentUser.AvatarImage
@@ -12,6 +12,7 @@ const Contact = ({ allUsers, currentUser, changeChat }) => {
     setcurrentSelected(index);
     changeChat(contact);
   };
+
   return (
     <>
       <Container className="lg:h-full">

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
 import Logout from "./Logout";
 import ChatInput from "./ChatInput";
@@ -6,7 +6,8 @@ import ChatMessages from "./ChatMessages";
 import axios from "axios";
 import { sendMsgRoute, getAllMsgRoute } from "../utils/APIRoutes";
 
-const ChatContainer = ({ currentChat, currentUser, socket, navHeightRef }) => {
+const ChatContainer = ({ currentChat, currentUser, socket }) => {
+  const containerRef = useRef();
   const [messages, setmessages] = useState([]);
 
   useEffect(() => {
@@ -38,12 +39,13 @@ const ChatContainer = ({ currentChat, currentUser, socket, navHeightRef }) => {
     const message = [...messages];
 
     message.push({ fromSelf: false, message: data });
-  
+
     setmessages(message);
   });
   return (
     <Container
       className={`flex flex-col h-[calc(100vh-167px)] md:h-[calc(100vh-164px)] relative bg-[#131324] lg:h-auto`}
+      // className={`flex flex-col  relative bg-[#131324] lg:h-auto`}
     >
       <div className="chat-header  flex justify-between items-center p-4 ">
         <div className="user-details flex items-center space-x-3">

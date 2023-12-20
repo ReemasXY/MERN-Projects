@@ -65,13 +65,13 @@ const ChatInput = ({ handleSendMsg }) => {
         <input
           type="text"
           placeholder="Enter your text here"
-          className="w-[90%] bg-[transparent] p-3 outline-none
-          text-white
+          className="w-[80%] bg-[transparent] p-3 outline-none
+          text-white lg:w-[90%]
           "
           onChange={handleInputChange}
           value={inputMessage}
         />
-        <button className="text-xl text-white bg-[#9a86f3] p-2 w-[10%] ">
+        <button className="text-xl text-white bg-[#9a86f3] p-2 w-[20%] lg:w-[10%] ">
           <IoMdSend className="mx-auto" />
         </button>
       </form>
