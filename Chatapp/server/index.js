@@ -10,7 +10,7 @@ const { Server } = require("socket.io");
 
 app.use(
   cors({
-    origin: "https://chatapp-mu-tawny.vercel.app",
+    origin: ["https://chatapp-mu-tawny.vercel.app", "http://localhost:5173"],
   })
 );
 app.use(express.json());
