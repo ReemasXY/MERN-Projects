@@ -31,4 +31,7 @@ left: 10px;
     background-color: #9a86f3;
     border-radius: 10px;
 }
+.height {
+    height: auto !important;
+  }
 @tailwind utilities;

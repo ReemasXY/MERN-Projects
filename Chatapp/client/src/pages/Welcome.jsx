@@ -3,10 +3,9 @@ import React from "react";
 import Robot from "../assets/robot.gif";
 import Logout from "./Logout";
 const Welcome = ({ currentUser }) => {
-
   return (
     <>
-      <div className="main flex items-center justify-center flex-col text-white h-full lg:w-full relative">
+      <div className="main flex items-center justify-center flex-col text-white h-full lg:w-full relative bg-[#131324]">
         <div className="logo absolute right-3 top-5">
           <Logout />
         </div>
