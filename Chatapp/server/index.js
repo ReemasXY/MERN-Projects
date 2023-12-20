@@ -9,9 +9,10 @@ const { Server } = require("socket.io");
 // console.log(typeof parseInt(port));
 
 app.use(
-  cors({
-    origin: ["https://chatapp-mu-tawny.vercel.app", "http://localhost:5173"],
-  })
+  // cors({
+  //   origin: ["https://chatapp-mu-tawny.vercel.app", "http://localhost:5173"],
+  // })
+  cors()
 );
 app.use(express.json());
 Connection(); //connection to database
