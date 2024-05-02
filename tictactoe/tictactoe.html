@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="tictactoe.css">
+    <link rel="stylesheet" href="tttresponsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="winner">
+        <div class="winner-overlay">
+            <div class="btn">
+            <button class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+
+            </div>
+
+            <div class="image-container">
+
+                <img src="https://i.gifer.com/origin/1a/1af8d3b487b77085d5288814f151e1de_w200.gif" alt="">
+                <img src="https://i.pinimg.com/originals/b4/72/a1/b472a187696137c70e6456450b99c351.gif" alt="">
+                <img src="https://i.pinimg.com/originals/b4/72/a1/b472a187696137c70e6456450b99c351.gif" alt="">
+                <div class="win">
+                    <h1>Player X won</h1>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <h1 class="nodisplay">
+        Player Choose
+    </h1>
+<h1 class="nodisplay">
+    Player 1: X 
+    <button value="X" class="clear" onclick="select(value)"> Select</button>
+</h1>
+<h1 class="nodisplay">
+    Player 2: O
+    <button value="O" class="clear" onclick="select(value)"> Select</button>
+</h1>
+
+    <h1 id="welcome">WELCOME TO TICTACTOE</h1>
+    <div class="container" id="container">
+<div class="tictactoe">
+    <div class="cross-circle"></div>
+    <div class="cross-circle"></div>
+    <div class="cross-circle"></div>
+    <div class="cross-circle"></div>
+    <div class="cross-circle"></div>
+    <div class="cross-circle"></div>
+    <div class="cross-circle"></div>
+    <div class="cross-circle"></div>
+    <div class="cross-circle"></div>
+</div>
+<div class="line" id="aniline"></div>
+
+    </div>
+</body>
+<script src="tictactoe.js"></script>
+<script src="clear.js"></script>
+<script src="https://kit.fontawesome.com/4ecc07101d.js" crossorigin="anonymous"></script>
+
+</html>
